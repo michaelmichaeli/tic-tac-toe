@@ -62,7 +62,7 @@ const Game = () => {
 						jumpTo(0);
 					}}
 				>
-					Ai is {isAiMode ? "on" : "off"}
+					{isAiMode ? "Single-Player" : "Multiplayer"}
 				</button>
 			</div>
 			<div className="board-container">
