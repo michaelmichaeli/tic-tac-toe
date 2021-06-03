@@ -39,9 +39,9 @@ h1 {
 	margin: auto;
 
 	background: white;
-	/* display: grid;
-	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-	gap: 0.3rem; */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.3rem;
 }
 
 .squares {
