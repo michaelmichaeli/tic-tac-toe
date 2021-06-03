@@ -11,7 +11,7 @@ body {
 	color: white;
 	font-family: "Roboto", sans-serif;
 	display: flex;
-	/* align-items: center; */
+	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
 	padding: 2rem;
@@ -25,6 +25,10 @@ h1 {
 	position: relative;
 	padding-bottom: 100%;
 	margin-bottom: 1.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .board {
@@ -40,8 +44,8 @@ h1 {
 
 	background: white;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 0.3rem;
+	grid-template: repeat(3, auto) / repeat(3, auto);
+	grid-gap: 0.3rem;
 }
 
 .squares {
@@ -50,6 +54,9 @@ h1 {
 	font-size: 5rem;
 	cursor: pointer;
 	outline: none;
+	/* width: 100px;
+	height: 100px; */
+	padding: 0;
 }
 
 .X {

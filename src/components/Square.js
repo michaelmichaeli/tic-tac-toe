@@ -11,7 +11,7 @@ const Square = ({ value, onClick }) => {
             onClick={onClick}
             className={style}
         >
-            {value}
+            {value ? value : "O"}
         </button>
     )
 }
