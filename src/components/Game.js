@@ -58,6 +58,7 @@ const Game = () => {
 				<button
 					onClick={() => {
 						setIsAiMode(!isAiMode);
+						setHistory([history[0]])
 						jumpTo(0);
 					}}
 				>

@@ -1,4 +1,5 @@
 export function calculateWinner(squares) {
+	if (!squares) return
 	const lines = [
 		[0, 1, 2],
 		[3, 4, 5],
