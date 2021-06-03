@@ -28,7 +28,7 @@ const Game = () => {
 	const AIMove = (historyPoint, squares) => {
 		// debugger
 		let aiMoveIndex = bestMove(squares);
-		squares[aiMoveIndex] = 'O';
+		squares[aiMoveIndex] = "O";
 		setHistory([...historyPoint, squares]);
 		setStep(historyPoint.length);
 	};
@@ -44,13 +44,7 @@ const Game = () => {
 				const destination = move ? `Go to Move #${move}` : "Go to Start";
 				return (
 					<li key={move}>
-						<button
-							onClick={() => {
-								jumpTo(move);
-							}}
-						>
-							{destination}
-						</button>
+						<button onClick={() => jumpTo(move)}>{destination}</button>
 					</li>
 				);
 			})
@@ -61,7 +55,14 @@ const Game = () => {
 		<>
 			<h1>React Tic Tac Toe - With Ai</h1>
 			<div className="settings">
-				<button onClick={() => setIsAiMode(!isAiMode)}>Ai is {isAiMode ? 'on' : 'off'}</button>
+				<button
+					onClick={() => {
+						setIsAiMode(!isAiMode);
+						jumpTo(0);
+					}}
+				>
+					Ai is {isAiMode ? "on" : "off"}
+				</button>
 			</div>
 			<div className="board-container">
 				<Board squares={history[step]} onClick={handleClick} />
