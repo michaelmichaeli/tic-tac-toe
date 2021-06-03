@@ -35,7 +35,7 @@ const Game = () => {
 
 	const jumpTo = (step) => {
 		setStep(step);
-		setIsXsTurn(step % 2 === 0);
+		if (!isAiMode) setIsXsTurn(step % 2 === 0);
 	};
 
 	const HistoryMoves = () => {
@@ -68,12 +68,12 @@ const Game = () => {
 				<Board squares={history[step]} onClick={handleClick} />
 			</div>
 			<div className="info-wrapper">
-				{!isAiMode && <div>
+				<div>
 					<h3>History</h3>
 					<ul>
 						<HistoryMoves />
 					</ul>
-				</div>}
+				</div>
 				<h3>
 					{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
 				</h3>
