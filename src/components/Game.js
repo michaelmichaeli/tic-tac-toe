@@ -36,6 +36,7 @@ const Game = () => {
 	const jumpTo = (step) => {
 		setStep(step);
 		if (!isAiMode) setIsXsTurn(step % 2 === 0);
+		else setIsXsTurn(true)
 	};
 
 	const HistoryMoves = () => {
