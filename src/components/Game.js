@@ -53,7 +53,7 @@ const Game = () => {
 
 	return (
 		<>
-			<h1>React Tic Tac Toe - With Ai</h1>
+			<h1>React Tic Tac Toe <span>- With Ai</span></h1>
 			<div className="settings">
 				<button
 					onClick={() => {
