@@ -174,7 +174,7 @@ li {
 }
 #toggles {
 	width: 60px;
-	/* margin:50px auto; */
+	margin: 0 35px;
 	text-align: center;
 }
 .ios-toggle,
