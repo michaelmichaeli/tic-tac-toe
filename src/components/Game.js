@@ -101,7 +101,7 @@ const Game = () => {
 						alt={restart}
 					/>
 				</div>
-				{!isAiMode || winner && <h3 className="next-player">
+				{(!isAiMode || winner) && <h3 className="next-player">
 					{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
 				</h3>}
 				<div className="board-wrapper">
