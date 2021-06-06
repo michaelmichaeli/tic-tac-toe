@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { calculateWinner, bestMove } from "../helper";
 import Board from "./Board";
 import logo from "../assets/img/tic-tac-toe.svg";
+import restart from "../assets/img/restart.svg";
 
 const Game = () => {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -59,6 +60,11 @@ const Game = () => {
 		setHistory([history[0]]);
 		jumpTo(0);
 	};
+	
+	const onRestart = () => {
+		setHistory([history[0]]);
+		jumpTo(0);
+	};
 
 	return (
 		<>
@@ -88,13 +94,14 @@ const Game = () => {
 					{/* <button onClick={toggleAiMode}>
 						{isAiMode ? "Single-Player" : "Multiplayer"}
 					</button> */}
+					<img className="restart" onClick={onRestart} src={restart} alt={restart} />
 					<h3>
 						{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
 					</h3>
 				</div>
 				<div className="board-wrapper">
 					{/* <div className="board-container"> */}
-						<Board squares={history[step]} onClick={handleClick} />
+					<Board squares={history[step]} onClick={handleClick} />
 					{/* </div> */}
 				</div>
 				{history.length > 1 && (
