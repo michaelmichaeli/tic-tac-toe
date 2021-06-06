@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { calculateWinner, bestMove } from "../helper";
 import Board from "./Board";
+import logo from "../assets/img/tic-tac-toe.svg";
 
 const Game = () => {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -18,7 +19,7 @@ const Game = () => {
 		squares[i] = currentPlayer;
 		setHistory([...historyPoint, squares]);
 		setStep(historyPoint.length);
-		if (isAiMode && calculateWinner(squares) === null) {
+		if (isAiMode && !winner) {
 			AIMove(historyPoint, squares);
 		} else {
 			setIsXsTurn(!isXsTurn);
@@ -36,7 +37,7 @@ const Game = () => {
 	const jumpTo = (step) => {
 		setStep(step);
 		if (!isAiMode) setIsXsTurn(step % 2 === 0);
-		else setIsXsTurn(true)
+		else setIsXsTurn(true);
 	};
 
 	const HistoryMoves = () => {
@@ -49,36 +50,63 @@ const Game = () => {
 					</li>
 				);
 			})
-			.slice(0, -1);
+			.slice(0, -1)
+			.reverse();
+	};
+
+	const toggleAiMode = () => {
+		setIsAiMode(!isAiMode);
+		setHistory([history[0]]);
+		jumpTo(0);
 	};
 
 	return (
 		<>
-			<h1>React Tic Tac Toe <span>- With Ai</span></h1>
-			<div className="settings">
-				<button
-					onClick={() => {
-						setIsAiMode(!isAiMode);
-						setHistory([history[0]])
-						jumpTo(0);
-					}}
-				>
-					{isAiMode ? "Single-Player" : "Multiplayer"}
-				</button>
-			</div>
-			<div className="board-container">
-				<Board squares={history[step]} onClick={handleClick} />
-			</div>
-			<div className="info-wrapper">
-				<div>
-					<h3>History</h3>
-					<ul>
-						<HistoryMoves />
-					</ul>
+			<div className="app-container">
+				<div className="header">
+					<img src={logo} alt={logo} />
+					<h1>Tic Tac Toe</h1>
+					<h3>With Ai</h3>
 				</div>
-				<h3>
-					{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
-				</h3>
+				<div className="settings">
+					<div id="toggles">
+						<input
+							type="checkbox"
+							name="checkbox1"
+							id="checkbox1"
+							className="ios-toggle"
+							checked={isAiMode}
+							onChange={toggleAiMode}
+						/>
+						<label
+							htmlFor="checkbox1"
+							className="checkbox-label"
+							data-off="Ai off"
+							data-on="Ai on"
+						></label>
+					</div>
+					{/* <button onClick={toggleAiMode}>
+						{isAiMode ? "Single-Player" : "Multiplayer"}
+					</button> */}
+					<h3>
+						{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
+					</h3>
+				</div>
+				<div className="board-wrapper">
+					{/* <div className="board-container"> */}
+						<Board squares={history[step]} onClick={handleClick} />
+					{/* </div> */}
+				</div>
+				{history.length > 1 && (
+					<div className="history-wrapper">
+						<div>
+							<h3>Recent Moves</h3>
+							<ul>
+								<HistoryMoves />
+							</ul>
+						</div>
+					</div>
+				)}
 			</div>
 		</>
 	);
