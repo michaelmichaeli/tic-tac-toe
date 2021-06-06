@@ -60,7 +60,7 @@ const Game = () => {
 		setHistory([history[0]]);
 		jumpTo(0);
 	};
-	
+
 	const onRestart = () => {
 		setHistory([history[0]]);
 		jumpTo(0);
@@ -94,11 +94,16 @@ const Game = () => {
 					{/* <button onClick={toggleAiMode}>
 						{isAiMode ? "Single-Player" : "Multiplayer"}
 					</button> */}
-					<img className="restart" onClick={onRestart} src={restart} alt={restart} />
-					<h3>
-						{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
-					</h3>
+					<img
+						className="restart"
+						onClick={onRestart}
+						src={restart}
+						alt={restart}
+					/>
 				</div>
+				{!isAiMode || winner && <h3 className="next-player">
+					{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
+				</h3>}
 				<div className="board-wrapper">
 					{/* <div className="board-container"> */}
 					<Board squares={history[step]} onClick={handleClick} />

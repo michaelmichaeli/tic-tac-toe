@@ -55,28 +55,27 @@ app-container {
 
 .settings {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
-	margin: 2rem 0;
+	/* margin: 2rem 0; */
 	flex-wrap: wrap;
 }
 
-.settings * {
-	display: block;
+.settings img.restart {
+	width: 30px;
+	cursor: pointer;
+	padding-top: 10px;
 }
 
-.settings img.restart {
-	width: 40px;
-	cursor: pointer;
+h3.next-player {
+	padding: 20px;
+	padding-top: 0;
 }
 
 .board-wrapper {
 	padding: 20px;
 	border-radius: 10px;
-
 	margin-bottom: 1.5rem;
-	/* padding-bottom: 100%; */
-
 	background-color: #eaf1f9;
 }
 
@@ -99,7 +98,7 @@ app-container {
 
 	background: #574d70;
 
-	margin: auto;
+	margin: 0;
 
 	display: grid;
 	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -174,7 +173,7 @@ li {
 }
 #toggles {
 	width: 60px;
-	margin: 0 35px;
+	margin-right: 100px;
 	text-align: center;
 }
 .ios-toggle,
