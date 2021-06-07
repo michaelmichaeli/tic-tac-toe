@@ -17,7 +17,7 @@ body {
 	font-family: "Roboto", sans-serif;
 	display: flex;
 	justify-content: center;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	padding: 2rem 0;
 }
 
@@ -64,7 +64,6 @@ body {
 	flex-wrap: wrap;
 }
 
-
 .board-wrapper {
 	position: relative;
 	padding: 20px;
@@ -85,39 +84,39 @@ h3.next-player {
 	filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 1));
 	/* opacity: 0; */
 	display: none;
-	animation: fade linear 2s;
-	-webkit-animation: fade linear 2s;
-	-moz-animation: fade linear 2s;
-	-o-animation: fade linear 2s;
-	-ms-animation: fade linear 2s;
+	animation: fade linear 1s;
+	-webkit-animation: fade linear 1s;
+	-moz-animation: fade linear 1s;
+	-o-animation: fade linear 1s;
+	-ms-animation: fade linear 1s;
   }
   @keyframes fade {
 	0% {opacity:0;}
-	60% {opacity:0}
+	30% {opacity:0}
 	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-moz-keyframes fade {
 	0% {opacity:0;}
-	60% {opacity:0}
+	30% {opacity:0}
 	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-webkit-keyframes fade {
 	0% {opacity:0;}
-	60% {opacity:0}
+	30% {opacity:0}
 	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-o-keyframes fade {
 	0% {opacity:0;}
-	60% {opacity:0}
+	30% {opacity:0}
 	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-ms-keyframes fade {
 	0% {opacity:0;}
-	60% {opacity:0}
+	30% {opacity:0}
 	90% {opacity:1;}
 	100% {opacity:0;}
   }

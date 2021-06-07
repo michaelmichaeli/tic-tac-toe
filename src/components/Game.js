@@ -21,7 +21,7 @@ const Game = () => {
 				setTimeout(() => {
 					nextPlayerEl.style.opacity = 0;
 					nextPlayerEl.style.display = "none";
-				}, 2000);
+				}, 1000);
 			}
 			// }, 1000);
 	}, [currentPlayer]);
@@ -116,7 +116,7 @@ const Game = () => {
 							{"It's " + currentPlayer + "'s turn"}
 						</h3>
 					)}
-					<Board squares={history[step]} onClick={handleClick} />
+					<Board winner={winner} squares={history[step]} onClick={handleClick} />
 				</div>
 				{history.length > 1 && (
 					<section className="bottom">
