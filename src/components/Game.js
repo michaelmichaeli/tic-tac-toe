@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { calculateWinner, bestMove } from "../helper";
 import Board from "./Board";
 import logo from "../assets/img/tic-tac-toe.svg";
@@ -11,6 +11,20 @@ const Game = () => {
 	const [isAiMode, setIsAiMode] = useState(true);
 	const winner = calculateWinner(history[step]);
 	const currentPlayer = isXsTurn ? "X" : "O";
+
+	useEffect(() => {
+		const nextPlayerEl = document.querySelector('h3.next-player')
+		if (nextPlayerEl) {
+			// nextPlayerEl.style.display = 'none';
+			nextPlayerEl.style.display = 'block';
+			nextPlayerEl.style.opacity = 1;
+			setTimeout(() => {
+				
+				nextPlayerEl.style.opacity = 0;
+				nextPlayerEl.style.display = 'none';
+			}, 1000);
+		}
+	},[currentPlayer])
 
 	const handleClick = (i) => {
 		const historyPoint = history.slice(0, step + 1);
@@ -28,7 +42,6 @@ const Game = () => {
 	};
 
 	const AIMove = (historyPoint, squares) => {
-		// debugger
 		let aiMoveIndex = bestMove(squares);
 		squares[aiMoveIndex] = "O";
 		setHistory([...historyPoint, squares]);
@@ -87,37 +100,37 @@ const Game = () => {
 						<label
 							htmlFor="checkbox1"
 							className="checkbox-label"
-							data-off="Ai off"
-							data-on="Ai on"
+							data-off="Multiplayer"
+							data-on="Single Player"
 						></label>
 					</div>
-					{/* <button onClick={toggleAiMode}>
-						{isAiMode ? "Single-Player" : "Multiplayer"}
-					</button> */}
-					<img
-						className="restart"
-						onClick={onRestart}
-						src={restart}
-						alt={restart}
-					/>
 				</div>
-				{(!isAiMode || winner) && <h3 className="next-player">
-					{winner ? "Winner: " + winner : "Next Player: " + currentPlayer}
-				</h3>}
 				<div className="board-wrapper">
-					{/* <div className="board-container"> */}
+					{winner && (
+						<h3 className="winner">
+							{winner !== "Tie" ? winner + " won!" : "It's a Tie!"}
+						</h3>
+					)}
+					{!isAiMode && !winner && (
+						<h3 className="next-player">
+							{"It's " + currentPlayer + "'s turn"}
+						</h3>
+					)}
 					<Board squares={history[step]} onClick={handleClick} />
-					{/* </div> */}
 				</div>
 				{history.length > 1 && (
-					<div className="history-wrapper">
-						<div>
+					<section className="bottom">
+						<div className="history-wrapper">
 							<h3>Recent Moves</h3>
 							<ul>
 								<HistoryMoves />
 							</ul>
 						</div>
-					</div>
+						<div className="restart" onClick={onRestart}>
+							<img src={restart} alt={restart} />
+							<p>Restart</p>
+						</div>
+					</section>
 				)}
 			</div>
 		</>
