@@ -99,22 +99,26 @@ h3.next-player {
   }
   @-moz-keyframes fade {
 	0% {opacity:0;}
-	30% {opacity:1;}
+	60% {opacity:0}
+	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-webkit-keyframes fade {
 	0% {opacity:0;}
-	30% {opacity:1;}
+	60% {opacity:0}
+	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-o-keyframes fade {
 	0% {opacity:0;}
-	30% {opacity:1;}
+	60% {opacity:0}
+	90% {opacity:1;}
 	100% {opacity:0;}
   }
   @-ms-keyframes fade {
 	0% {opacity:0;}
-	30% {opacity:1;}
+	60% {opacity:0}
+	90% {opacity:1;}
 	100% {opacity:0;}
   }
 
