@@ -13,18 +13,18 @@ const Game = () => {
 	const currentPlayer = isXsTurn ? "X" : "O";
 
 	useEffect(() => {
-		const nextPlayerEl = document.querySelector('h3.next-player')
+		// setTimeout(() => {
+		const nextPlayerEl = document.querySelector("h3.next-player");
 		if (nextPlayerEl) {
-			// nextPlayerEl.style.display = 'none';
-			nextPlayerEl.style.display = 'block';
-			nextPlayerEl.style.opacity = 1;
-			setTimeout(() => {
-				
-				nextPlayerEl.style.opacity = 0;
-				nextPlayerEl.style.display = 'none';
-			}, 1000);
-		}
-	},[currentPlayer])
+				nextPlayerEl.style.display = "block";
+				nextPlayerEl.style.opacity = 1;
+				setTimeout(() => {
+					nextPlayerEl.style.opacity = 0;
+					nextPlayerEl.style.display = "none";
+				}, 2000);
+			}
+			// }, 1000);
+	}, [currentPlayer]);
 
 	const handleClick = (i) => {
 		const historyPoint = history.slice(0, step + 1);
