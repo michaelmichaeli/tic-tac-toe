@@ -31,7 +31,7 @@ body {
 	align-items: center;
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .header img {
@@ -57,7 +57,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	flex-wrap: wrap;
 }
 
@@ -65,14 +65,14 @@ body {
 	position: relative;
 	padding: 20px;
 	border-radius: 10px;
-	margin-bottom: 1.5rem;
+	margin-bottom: 10px;
 	background-color: #eaf1f9;
 }
 
 .winner {
 	position: absolute;
 	padding: 0;
-	font-size: 20vmin;
+	font-size: 18vmin;
 	text-align: center;
 	line-height: 80%;
 	top: 50%;
@@ -83,8 +83,10 @@ body {
 }
 
 .board {
-	max-width: min(calc(100vw - 150px), calc(100vh - 300px));
-	max-height: min(calc(100vw - 150px), calc(100vh - 300px));
+	max-width: 65vmin;
+	max-height: 65vmin;
+	/* max-width: min(calc(100vw - 150px), calc(100vh - 300px));
+	max-height: min(calc(100vw - 150px), calc(100vh - 300px)); */
 	width: 100vw;
 	height: 100vw;
 	min-width: 300px;
@@ -99,6 +101,9 @@ body {
 	-webkit-box-shadow: inset 50px 50px 100px #00000078;
 	box-shadow: inset 50px 50px 100px #00000078;
 	z-index: 1;
+}
+.board.win {
+	background-color: rgba(0, 0, 0, 0.75);
 }
 
 .squares {
@@ -120,6 +125,7 @@ body {
 }
 .squares.win {
 	filter: grayscale(1);
+	opacity: 0.15;
 }
 
 .X img {
@@ -148,7 +154,7 @@ section.bottom {
 }
 .next-player-preview p {
 	margin-bottom: 5px;
-	font-size: 4vmin;
+	font-size: 3vmin;
 }
 .next-player-preview.won {
 	filter: grayscale(1);
@@ -248,7 +254,7 @@ li {
 	-webkit-border-radius: 18px;
 	-moz-border-radius: 18px;
 	border-radius: 18px;
-	background: #f8f8f8;
+	background: #ed55a9;
 	cursor: pointer;
 }
 .checkbox-label:before {
@@ -284,7 +290,7 @@ li {
 	height: 100%;
 	width: 300px;
 	text-align: right;
-	color: #bfbfbf;
+	color: #ed55a9;
 	white-space: nowrap;
 }
 .ios-toggle:checked + .checkbox-label {
@@ -309,9 +315,9 @@ li {
 
 #checkbox1 + .checkbox-label {
 	/*box-shadow*/
-	-webkit-box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #dddddd;
-	-moz-box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #dddddd;
-	box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #dddddd;
+	-webkit-box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #ed55a9;
+	-moz-box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #ed55a9;
+	box-shadow: inset 0 0 0 0px #3fc0dd, 0 0 0 2px #ed55a9;
 }
 #checkbox1:checked + .checkbox-label {
 	/*box-shadow*/
@@ -340,7 +346,7 @@ li {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	
+
 	position: absolute;
 	border: 10px solid #fff;
 	opacity: 1;
