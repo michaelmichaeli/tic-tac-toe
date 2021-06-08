@@ -8,11 +8,7 @@
 
 body {
 	background-color: rgb(0, 0, 0);
-	background: radial-gradient(
-		circle,
-		rgb(65, 65, 65) 0%,
-		#201c29 100%
-	);
+	background: radial-gradient(circle, rgb(65, 65, 65) 0%, #201c29 100%);
 	color: #eaf1f9;
 	font-family: "Roboto", sans-serif;
 	display: flex;
@@ -327,52 +323,48 @@ li {
 	color: #3fc0dd;
 }
 
-
-
 /* loader: */
 
 .lds-ripple {
 	display: inline-block;
-	position: relative;
 	width: 70vmin;
 	height: 70vmin;
 
 	position: absolute;
-	padding: 0;
-	text-align: center;
-	line-height: 80%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 99;
-	filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 1));
-  }
-  .lds-ripple div {
+}
+.lds-ripple div {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
 	position: absolute;
 	border: 10px solid #fff;
 	opacity: 1;
 	border-radius: 50%;
 	animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-  }
-  .lds-ripple div:nth-child(2) {
+}
+.lds-ripple div:nth-child(2) {
 	animation-delay: -0.5s;
-  }
-  @keyframes lds-ripple {
+}
+@keyframes lds-ripple {
 	0% {
-	  top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	  width: 0;
-	  height: 0;
-	  opacity: 1;
+		/* top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%); */
+		width: 0;
+		height: 0;
+		opacity: 1;
 	}
 	100% {
-		top: 50%;
+		/* top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
-	  width: 70vmin;
-	  height: 70vmin;
-	  opacity: 0;
+		transform: translate(-50%, -50%); */
+		width: 70vmin;
+		height: 70vmin;
+		opacity: 0;
 	}
-  }
-  
+}
