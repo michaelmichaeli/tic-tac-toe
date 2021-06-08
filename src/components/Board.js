@@ -2,7 +2,7 @@ import React from "react";
 import Square from "./Square";
 
 const Board = ({ squares, onClick, winner }) => {
-    return <div className="board">
+    return <div className={`board ${winner && "win"}`}>
         {squares.map((square, i) => {
             return <Square
                 key={i}

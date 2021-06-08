@@ -38,10 +38,12 @@ const Game = () => {
 		setHistory([...historyPoint, squares]);
 		setStep(historyPoint.length);
 		if (isAiMode && !winner) {
+			setIsXsTurn(false)
 			setIsLoading(true);
 			setTimeout(() => {
 				AIMove(historyPoint, squares);
 				setIsLoading(false);
+				setIsXsTurn(true)
 			}, 1000);
 		} else {
 			setIsXsTurn(!isXsTurn);

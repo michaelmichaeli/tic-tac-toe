@@ -2,19 +2,12 @@ import React from "react";
 import x from "../assets/img/x.svg";
 import o from "../assets/img/o.svg";
 
-
 const Square = ({ value, onClick, winner }) => {
-	let style
-	if (value) {
-		style = `squares ${value}`;
-	} else style = `squares`;
-	if (winner) {style += " win"}
 	return (
 		<button
+			className={`squares ${value && value} ${winner && "win"}`}
 			onClick={onClick}
-			className={style}
-			disabled={winner}
-		>
+			disabled={winner}>
 			{value === "X" && <img src={x} alt={x} />}
 			{value === "O" && <img src={o} alt={o} />}
 			{value === "" && null}
