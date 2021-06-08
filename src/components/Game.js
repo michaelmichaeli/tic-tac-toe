@@ -3,12 +3,15 @@ import { calculateWinner, bestMove } from "../helper";
 import Board from "./Board";
 import logo from "../assets/img/tic-tac-toe.svg";
 import restart from "../assets/img/restart.svg";
+import x from "../assets/img/x.svg";
+import o from "../assets/img/o.svg";
 
 const Game = () => {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
 	const [step, setStep] = useState(0);
 	const [isXsTurn, setIsXsTurn] = useState(true);
 	const [isAiMode, setIsAiMode] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const winner = calculateWinner(history[step]);
 	const currentPlayer = isXsTurn ? "X" : "O";
 
@@ -16,14 +19,14 @@ const Game = () => {
 		// setTimeout(() => {
 		const nextPlayerEl = document.querySelector("h3.next-player");
 		if (nextPlayerEl) {
-				nextPlayerEl.style.display = "block";
-				nextPlayerEl.style.opacity = 1;
-				setTimeout(() => {
-					nextPlayerEl.style.opacity = 0;
-					nextPlayerEl.style.display = "none";
-				}, 1000);
-			}
-			// }, 1000);
+			nextPlayerEl.style.display = "block";
+			nextPlayerEl.style.opacity = 1;
+			setTimeout(() => {
+				nextPlayerEl.style.opacity = 0;
+				nextPlayerEl.style.display = "none";
+			}, 1000);
+		}
+		// }, 1000);
 	}, [currentPlayer]);
 
 	const handleClick = (i) => {
@@ -35,7 +38,11 @@ const Game = () => {
 		setHistory([...historyPoint, squares]);
 		setStep(historyPoint.length);
 		if (isAiMode && !winner) {
-			AIMove(historyPoint, squares);
+			setIsLoading(true);
+			setTimeout(() => {
+				AIMove(historyPoint, squares);
+				setIsLoading(false);
+			}, 1000);
 		} else {
 			setIsXsTurn(!isXsTurn);
 		}
@@ -79,6 +86,18 @@ const Game = () => {
 		jumpTo(0);
 	};
 
+	const NextPlayerPreview = ({ currentPlayer, winner }) => {
+		return (
+			<div className={`next-player-preview ${winner && "won"}`}>
+				<p>Next Player</p>
+				<img
+					src={currentPlayer === "X" ? x : o}
+					alt={currentPlayer === "X" ? x : o}
+				/>
+			</div>
+		);
+	};
+
 	return (
 		<>
 			<div className="app-container">
@@ -105,33 +124,42 @@ const Game = () => {
 						></label>
 					</div>
 				</div>
+
 				<div className="board-wrapper">
-					{winner && (
-						<h3 className="winner">
-							{winner !== "Tie" ? winner + " won!" : "It's a Tie!"}
-						</h3>
+					{isLoading && !winner && (
+						<div class="lds-ripple">
+							<div></div>
+							<div></div>
+						</div>
 					)}
-					{!isAiMode && !winner && (
-						<h3 className="next-player">
-							{"It's " + currentPlayer + "'s turn"}
-						</h3>
+					{winner === "Tie" && <h3 className="winner">It's a Tie!</h3>}
+					{(winner === "X" || winner === "O") && (
+						<div className="winner">
+							<img src={winner === "X" ? x : o} alt={winner === "X" ? x : o} />
+							<h3>Won!</h3>
+						</div>
 					)}
-					<Board winner={winner} squares={history[step]} onClick={handleClick} />
+					<Board
+						winner={winner}
+						squares={history[step]}
+						onClick={handleClick}
+					/>
 				</div>
-				{history.length > 1 && (
-					<section className="bottom">
+				<section className="bottom">
+					<NextPlayerPreview winner={winner} currentPlayer={currentPlayer} />
+					{history.length > 1 && (
 						<div className="history-wrapper">
 							<h3>Recent Moves</h3>
 							<ul>
 								<HistoryMoves />
 							</ul>
 						</div>
-						<div className="restart" onClick={onRestart}>
-							<img src={restart} alt={restart} />
-							<p>Restart</p>
-						</div>
-					</section>
-				)}
+					)}
+					<button className={`restart  ${winner && "won"}`} onClick={onRestart}>
+						<img src={restart} alt={restart} />
+						<p>Restart</p>
+					</button>
+				</section>
 			</div>
 		</>
 	);

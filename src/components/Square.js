@@ -4,7 +4,11 @@ import o from "../assets/img/o.svg";
 
 
 const Square = ({ value, onClick, winner }) => {
-	const style = value ? `squares ${value}` : `squares`;
+	let style
+	if (value) {
+		style = `squares ${value}`;
+	} else style = `squares`;
+	if (winner) {style += " win"}
 	return (
 		<button
 			onClick={onClick}
