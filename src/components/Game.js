@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { calculateWinner, bestMove } from "../helper";
+import { calculateWinner, bestMove } from "../service";
 import Board from "./Board";
 import logo from "../assets/img/tic-tac-toe.svg";
 import restart from "../assets/img/restart.svg";
@@ -77,7 +77,7 @@ const Game = () => {
 			.reverse();
 	};
 
-	const toggleAiMode = () => {
+	const onToggleAiMode = () => {
 		setIsAiMode(!isAiMode);
 		setHistory([history[0]]);
 		jumpTo(0);
@@ -108,7 +108,7 @@ const Game = () => {
 					<h1>Tic Tac Toe</h1>
 					<h3>With Ai</h3>
 				</div>
-				<div className="settings">
+				<section className="settings">
 					<div id="toggles">
 						<input
 							type="checkbox"
@@ -116,7 +116,7 @@ const Game = () => {
 							id="checkbox1"
 							className="ios-toggle"
 							checked={isAiMode}
-							onChange={toggleAiMode}
+							onChange={onToggleAiMode}
 						/>
 						<label
 							htmlFor="checkbox1"
@@ -125,7 +125,7 @@ const Game = () => {
 							data-on="Single Player"
 						></label>
 					</div>
-				</div>
+				</section>
 
 				<div className="board-wrapper">
 					{isLoading && !winner && (
