@@ -15,8 +15,9 @@ const Game = () => {
 	const winner = calculateWinner(history[step]);
 	const currentPlayer = isXsTurn ? "X" : "O";
 
+
+	// For animating Next Player block on endgame
 	useEffect(() => {
-		// setTimeout(() => {
 		const nextPlayerEl = document.querySelector("h3.next-player");
 		if (nextPlayerEl) {
 			nextPlayerEl.style.display = "block";
@@ -26,7 +27,6 @@ const Game = () => {
 				nextPlayerEl.style.display = "none";
 			}, 1000);
 		}
-		// }, 1000);
 	}, [currentPlayer]);
 
 	const handleClick = (i) => {
@@ -41,7 +41,7 @@ const Game = () => {
 			setIsXsTurn(false)
 			setIsLoading(true);
 			setTimeout(() => {
-				AIMove(historyPoint, squares);
+				makeAiMove(historyPoint, squares);
 				setIsLoading(false);
 				setIsXsTurn(true)
 			}, 1000);
@@ -50,7 +50,7 @@ const Game = () => {
 		}
 	};
 
-	const AIMove = (historyPoint, squares) => {
+	const makeAiMove = (historyPoint, squares) => {
 		let aiMoveIndex = bestMove(squares);
 		squares[aiMoveIndex] = "O";
 		setHistory([...historyPoint, squares]);
@@ -109,7 +109,7 @@ const Game = () => {
 					<h3>With Ai</h3>
 				</div>
 				<section className="settings">
-					<div id="toggles">
+					<div className="toggles">
 						<input
 							type="checkbox"
 							name="checkbox1"
@@ -125,6 +125,22 @@ const Game = () => {
 							data-on="Single Player"
 						></label>
 					</div>
+					{/* {<div className="toggles">
+						<input
+							type="checkbox"
+							name="checkbox2"
+							id="checkbox2"
+							className="ios-toggle"
+							checked={isAiMode}
+							onChange={onToggleAiMode}
+						/>
+						<label
+							htmlFor="checkbox2"
+							className="checkbox-label"
+							data-off="Remote"
+							data-on="Local"
+						></label>
+					</div>} */}
 				</section>
 
 				<div className="board-wrapper">
